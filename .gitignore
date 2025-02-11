@@ -1,0 +1,37 @@
+# Vagrant által generált fájlok
+.vagrant/
+
+# SSH kulcsok és érzékeny adatok
+*.pem
+*.key
+*.crt
+*.enc
+id_rsa
+id_rsa.pub
+
+# Swap fájlok és egyéb ideiglenes fájlok
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+
+# Log fájlok
+*.log
+*.out
+*.err
+
+# IDE és szerkesztő fájlok
+.vscode/
+.idea/
+*.iml
+
+# Ansible cache és átmeneti fájlok
+*.retry
+
+# Nem kívánt konfigurációs fájlok
+*.tfvars
+*.override
+*.lock
+.terraform/
+terraform.tfstate*
