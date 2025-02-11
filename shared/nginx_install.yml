@@ -1,0 +1,32 @@
+---
+- name: Nginx telepítése és konfigurálása
+  hosts: webservers
+  become: yes
+  vars:
+    - custom_message: "<h1>Kovács Zoltán Tamás</h1>"
+
+  tasks:
+    - name: Telepítse az Nginx csomagot
+      package:
+        name: nginx
+        state: present
+    
+    - name: Engedélyezze és indítsa el az Nginx-et
+      systemd:
+        name: nginx
+        enabled: yes
+        state: started
+
+    - name: Index.html sablon alkalmazása
+      template:
+        src: index.j2
+        dest: /usr/share/nginx/html/index.html
+        mode: '0644'
+      notify: Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
